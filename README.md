@@ -2,8 +2,8 @@
 
 <div style="display:flex;width:100%;justify-content:center;">
 <img src="https://img.shields.io/npm/v/vue3-lazyload" />
-<img src="https://img.shields.io/github/package-json/dependency-version/murongg/vue3-lazyload/vue" />
 <img src="https://img.shields.io/github/package-json/dependency-version/murongg/vue3-lazyload/dev/rollup/develop" />
+<img src="https://img.shields.io/npm/dw/vue3-lazyload" />
 </div>
 <br />
 <div style="display:flex;width:100%;justify-content:center;">
@@ -83,14 +83,18 @@ import VueLazyLoad from 'vue3-lazyload'
 
 const app = createApp(App)
 app.use(VueLazyLoad, {
-  loading: () => {
-    console.log('loading')
-  },
-  error: () => {
-    console.log('error')
-  },
-  loaded: () => {
-    console.log('loaded')
+  loading: '',
+  error: '',
+  lifecycle:{
+    loading: (el) => {
+      console.log('loading', el)
+    },
+    error: (el) => {
+      console.log('error', el)
+    },
+    loaded: (el) => {
+      console.log('loaded', el)
+    }
   }
 })
 app.mount('#app')
@@ -114,14 +118,14 @@ export default {
     const lazyOptions = reactive({
       src: 'your image url',
       lifecycle: {
-        loading: () => {
-          console.log('image loading')
+        loading: (el) => {
+          console.log('image loading', el)
         },
-        error: () => {
-          console.log('image error')
+        error: (el) => {
+          console.log('image error', el)
         },
-        loaded: () => {
-          console.log('image loaded')
+        loaded: (el) => {
+          console.log('image loaded', el)
         }
       }
     })
