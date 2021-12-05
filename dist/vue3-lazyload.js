@@ -1,5 +1,5 @@
 /*!
- * Vue3-Lazyload.js v0.2.4-beta
+ * Vue3-Lazyload.js v0.2.5-beta
  * A Vue3.x image lazyload plugin
  * (c) 2021 MuRong <admin@imuboy.cn>
  * Released under the MIT License.
@@ -221,6 +221,7 @@
         Lazy.prototype.unmount = function (el) {
             var _a;
             (_a = this._realObserver(el)) === null || _a === void 0 ? void 0 : _a.unobserve(el);
+            this._images.delete(el);
         };
         /**
          * force loading
